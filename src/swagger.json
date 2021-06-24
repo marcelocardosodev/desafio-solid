@@ -1,0 +1,148 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "Desafio Solid",
+        "description": "Creat and list users",
+        "version":"1.0.0",
+        "contact":{
+            "email":"eu@email.com"
+        }
+    },
+    "paths":{
+        "/users":{
+            "post":{
+                "tags":["User"],
+                "summary":"Create a user",
+                "description":"Create a new user",
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "name":{
+                                        "type":"string"
+                                    },
+                                    "email":{
+                                        "type":"string"
+                                    }
+                                }
+                            },
+                            "exemple":{
+                                "name":"User name sample",
+                                "email":"email sample"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400":{
+                        "description": "User already exists!"
+                    }
+                }
+            },
+            "get":{
+                "tags":["User"],
+                "summary":"List for adm",
+                "description":"List all when the user is admin",
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "user_id":{
+                                        "type":"string"
+                                    }
+                                },
+                                "exemple":{
+                                    "user_id":"adm user_id(uuid)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Success"
+                        },
+                    "400":{
+                        "description":"User not exists! || User is not admin! "
+                    }
+                }
+
+
+            },
+            "patch":{
+                "tags":["User"],
+                "summary":"Update user",
+                "description":"Turn admin a user",
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "user_id":{
+                                        "type":"string"
+                                    }
+                                },
+                                "exemple":{
+                                    "user_id":"adm user_id(uuid)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Success"
+                        },
+                    "400":{
+                        "description":"User not exists! "
+                    }
+                }
+            }
+            
+
+        },
+        "/user/{user_id}":{
+            "get":{
+                "tags":["User"],
+                "summary":"List user",
+                "description":"List  user especific",
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "user_id":{
+                                        "type":"string"
+                                    }
+                                },
+                                "exemple":{
+                                    "user_id":"adm user_id(uuid)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Success"
+                        },
+                    "400":{
+                        "description":"User not exists!"
+                    }
+                }
+
+
+            }
+
+        }
+    }
+}
